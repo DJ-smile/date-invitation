@@ -2,364 +2,110 @@
 <html lang="ru">
 
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Наше свидание ❤️</title>
-
-<link rel="stylesheet" href="style.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Наше свидание ❤️</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 
 <body>
 
-
-<div class="background"></div>
-
-
-<div class="card">
-
-
-
-<!-- ЭКРАН 1 -->
-
-<section id="screen1" class="screen active">
-
-
-<div class="heart">
-❤️
-</div>
-
-
-<h1>
-У меня есть идея...
-</h1>
-
-
-<p>
-Хочу провести с тобой<br>
-один особенный вечер 😊
-</p>
-
-
-<p class="small">
-Но сначала хочу узнать<br>
-что тебе нравится ✨
-</p>
-
-
-<button onclick="nextScreen(2)">
-Начать ❤️
-</button>
-
-
-</section>
-
-
-
-
-
-
-<!-- ЭКРАН 2 -->
-
-<section id="screen2" class="screen">
-
-
-<h2>
-Какое свидание тебе больше нравится? ✨
-</h2>
-
-
-
-<div class="options">
-
-
-<button onclick="chooseOption(this,'format')">
-☕ Спокойный вечер с кофе
-</button>
-
-
-<button onclick="chooseOption(this,'format')">
-🍿 Фильм и уют
-</button>
-
-
-<button onclick="chooseOption(this,'format')">
-🌃 Прогулка вечером
-</button>
-
-
-<button onclick="chooseOption(this,'format')">
-🍽 Красивый ужин
-</button>
-
-
-</div>
-
-
-
-<button onclick="nextScreen(3)">
-Дальше ❤️
-</button>
-
-
-</section>
-
-
-
-
-
-
-
-
-<!-- ЭКРАН 3 -->
-
-<section id="screen3" class="screen">
-
-
-<h2>
-Какое настроение хочется? 💫
-</h2>
-
-
-
-<div class="options">
-
-
-<button onclick="chooseOption(this,'mood')">
-😊 Весело
-</button>
-
-
-<button onclick="chooseOption(this,'mood')">
-❤️ Романтично
-</button>
-
-
-<button onclick="chooseOption(this,'mood')">
-😌 Спокойно
-</button>
-
-
-<button onclick="chooseOption(this,'mood')">
-🔥 Что-нибудь необычное
-</button>
-
-
-</div>
-
-
-
-<button onclick="nextScreen(4)">
-Дальше ❤️
-</button>
-
-
-
-</section>
-
-
-
-
-
-
-<!-- ЭКРАН 4 -->
-
-<section id="screen4" class="screen">
-
-
-<h2>
-Выбери удобную дату 📅
-</h2>
-
-
-
-<input 
-type="date" 
-id="date">
-
-
-
-
-
-
-<h2>
-Выбери время 🕒
-</h2>
-
-
-
-<div class="times">
-
-
-<button onclick="chooseTime(this)">
-19:00
-</button>
-
-
-<button onclick="chooseTime(this)">
-20:00
-</button>
-
-
-<button onclick="chooseTime(this)">
-21:00
-</button>
-
-
-<button onclick="chooseTime(this)">
-22:00
-</button>
-
-
-<button onclick="chooseTime(this)">
-23:00
-</button>
-
-
-<button onclick="chooseTime(this)">
-Я сама напишу
-</button>
-
-
-</div>
-
-
-
-
-
-<button onclick="nextScreen(5)">
-Дальше ❤️
-</button>
-
-
-
-</section>
-
-
-
-
-
-
-
-<!-- ЭКРАН 5 -->
-
-<section id="screen5" class="screen">
-
-
-<h2>
-Выберите стиль одежды 👔
-</h2>
-
-
-
-
-<div class="options">
-
-
-
-<button onclick="chooseStyle(this)">
-👕 Повседневная
-</button>
-
-
-
-<button onclick="chooseStyle(this)">
-👔 Классический
-</button>
-
-
-
-<button onclick="chooseStyle(this)">
-🧥 Кэжуал
-</button>
-
-
-
-<button onclick="chooseStyle(this)">
-🌹 Романтический
-</button>
-
-
-
-</div>
-
-
-
-
-<button onclick="showResult()">
-Готово ❤️
-</button>
-
-
-
-</section>
-
-
-
-
-
-
-
-
-<!-- ЭКРАН 6 ФИНАЛ -->
-
-<section id="screen6" class="screen">
-
-
-<div class="heart">
-💖
-</div>
-
-
-<h1>
-Наш план готов ❤️
-</h1>
-
-
-<div class="final-card">
-
-
-<p id="result">
-
-</p>
-
-
-</div>
-
-
-
-<p class="small">
-
-📸 Сделай скриншот, чтобы сохранить наш план и не забыть 😊
-
-</p>
-
-
-<p class="small">
-
-Я буду ждать нашей встречи ✨
-
-</p>
-
-
-
-</section>
-
-
-
-
-
-</div>
-
-
-
-
-<script src="script.js"></script>
-
-
+    <div class="background"></div>
+
+    <div class="card">
+
+        <!-- ЭКРАН 1 -->
+        <section id="screen1" class="screen active">
+            <div class="heart">❤️</div>
+            <h1>У меня есть идея...</h1>
+            <p>Хочу провести с тобой<br>один особенный вечер 😊</p>
+            <p class="small">Но сначала хочу узнать<br>что тебе нравится ✨</p>
+            <button onclick="nextScreen(2)">Начать ❤️</button>
+        </section>
+
+        <!-- ЭКРАН 2 -->
+        <section id="screen2" class="screen">
+            <h2>Какое свидание тебе больше нравится? ✨</h2>
+            <div class="options">
+                <button onclick="chooseOption(this,'format')">☕ Спокойный вечер с кофе</button>
+                <button onclick="chooseOption(this,'format')">🍿 Фильм и уют</button>
+                <button onclick="chooseOption(this,'format')">🌃 Прогулка вечером</button>
+                <button onclick="chooseOption(this,'format')">🍽 Красивый ужин</button>
+            </div>
+            <div class="nav-buttons">
+                <button class="back-btn" onclick="prevScreen(1)">← Назад</button>
+                <button onclick="nextScreen(3)">Дальше ❤️</button>
+            </div>
+        </section>
+
+        <!-- ЭКРАН 3 -->
+        <section id="screen3" class="screen">
+            <h2>Какое настроение хочется? 💫</h2>
+            <div class="options">
+                <button onclick="chooseOption(this,'mood')">😊 Весело</button>
+                <button onclick="chooseOption(this,'mood')">❤️ Романтично</button>
+                <button onclick="chooseOption(this,'mood')">😌 Спокойно</button>
+                <button onclick="chooseOption(this,'mood')">🔥 Что-нибудь необычное</button>
+            </div>
+            <div class="nav-buttons">
+                <button class="back-btn" onclick="prevScreen(2)">← Назад</button>
+                <button onclick="nextScreen(4)">Дальше ❤️</button>
+            </div>
+        </section>
+
+        <!-- ЭКРАН 4 -->
+        <section id="screen4" class="screen">
+            <h2>Выбери удобную дату 📅</h2>
+            <div class="date-container">
+                <input type="date" id="date" class="date-input">
+            </div>
+
+            <h2>Выбери время 🕒</h2>
+            <div class="times">
+                <button onclick="chooseTime(this)">19:00</button>
+                <button onclick="chooseTime(this)">20:00</button>
+                <button onclick="chooseTime(this)">21:00</button>
+                <button onclick="chooseTime(this)">22:00</button>
+                <button onclick="chooseTime(this)">23:00</button>
+                <button onclick="chooseTime(this)">Я сама напишу</button>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="back-btn" onclick="prevScreen(3)">← Назад</button>
+                <button onclick="nextScreen(5)">Дальше ❤️</button>
+            </div>
+        </section>
+
+        <!-- ЭКРАН 5 -->
+        <section id="screen5" class="screen">
+            <h2>Выберите стиль одежды 👔</h2>
+            <div class="options">
+                <button onclick="chooseStyle(this)">👕 Повседневная</button>
+                <button onclick="chooseStyle(this)">👔 Классический</button>
+                <button onclick="chooseStyle(this)">🧥 Кэжуал</button>
+                <button onclick="chooseStyle(this)">🌹 Романтический</button>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="back-btn" onclick="prevScreen(4)">← Назад</button>
+                <button onclick="showResult()">Готово ❤️</button>
+            </div>
+        </section>
+
+        <!-- ЭКРАН 6 ФИНАЛ -->
+        <section id="screen6" class="screen">
+            <div class="heart">💖</div>
+            <h1>Наш план готов ❤️</h1>
+            <div class="final-card">
+                <p id="result"></p>
+            </div>
+            <p class="small">📸 Сделай скриншот, чтобы сохранить наш план и не забыть 😊</p>
+            <p class="small">Я буду ждать нашей встречи ✨</p>
+        </section>
+
+    </div>
+
+    <script src="script.js"></script>
 </body>
 
 </html>
