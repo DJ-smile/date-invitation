@@ -1,0 +1,295 @@
+
+let answers = {
+
+    format:"",
+    mood:"",
+    time:""
+
+};
+
+
+
+
+
+// Переход между экранами
+
+function nextScreen(number){
+
+
+    document
+    .querySelectorAll(".screen")
+    .forEach(screen=>{
+
+
+        screen.classList.remove("active");
+
+
+    });
+
+
+
+    document
+    .getElementById("screen"+number)
+    .classList.add("active");
+
+
+
+}
+
+
+
+
+
+
+
+
+// Выбор ответа в опроснике
+
+function chooseOption(button,type){
+
+
+
+    let buttons = 
+    button.parentElement.querySelectorAll("button");
+
+
+
+    buttons.forEach(btn=>{
+
+        btn.classList.remove("selected");
+
+    });
+
+
+
+    button.classList.add("selected");
+
+
+
+    answers[type] = button.innerText;
+
+
+
+}
+
+
+
+
+
+
+
+
+// Выбор времени
+
+function chooseTime(button){
+
+
+
+    document
+    .querySelectorAll(".times button")
+    .forEach(btn=>{
+
+
+        btn.classList.remove("selected");
+
+
+    });
+
+
+
+    button.classList.add("selected");
+
+
+
+    answers.time = button.innerText;
+
+
+
+}
+
+
+
+
+
+
+
+
+// Финальный экран
+
+function showResult(){
+
+
+let date =
+document.getElementById("date").value;
+
+
+
+if(date==="" || answers.time===""){
+
+
+alert("Выбери дату и время ❤️");
+
+
+return;
+
+}
+
+
+
+let niceDate =
+new Date(date)
+.toLocaleDateString("ru-RU");
+
+
+
+
+// ТВОИ ДАННЫЕ TELEGRAM
+
+let BOT_TOKEN = "8814193874:AAEaOgUEiNzXqQINzUBrZdlAZ_oc56vuWbQ";
+
+let CHAT_ID = "660153132";
+
+
+
+
+
+let message = `
+
+❤️ Новое приглашение на свидание!
+
+
+📅 Дата:
+${niceDate}
+
+
+🕒 Время:
+${answers.time}
+
+
+✨ Формат:
+${answers.format}
+
+
+💫 Настроение:
+${answers.mood}
+
+`;
+
+
+
+
+
+// Отправка в Telegram
+
+fetch(
+`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`,
+{
+
+method:"POST",
+
+headers:{
+
+"Content-Type":"application/json"
+
+},
+
+body:JSON.stringify({
+
+chat_id:CHAT_ID,
+
+text:message
+
+})
+
+}
+
+)
+
+.then(()=>{
+
+
+console.log("Сообщение отправлено ❤️");
+
+
+})
+
+.catch(error=>{
+
+
+console.log(error);
+
+
+});
+
+
+
+
+
+
+
+document
+.getElementById("result")
+.innerHTML = `
+
+
+📅 Дата:
+<br>
+<b>${niceDate}</b>
+
+
+<br><br>
+
+
+🕒 Время:
+<br>
+<b>${answers.time}</b>
+
+
+<br><br>
+
+
+✨ Свидание:
+<br>
+<b>${answers.format}</b>
+
+
+<br><br>
+
+
+💫 Настроение:
+<br>
+<b>${answers.mood}</b>
+
+
+<br><br>
+
+
+👔 Одежда:
+<br>
+<b>${answers.style}</b>
+
+
+`;
+
+
+nextScreen(6);
+
+
+
+}
+let selectedStyle = "";
+
+
+function chooseStyle(button){
+
+    selectedStyle = button.innerText;
+
+    document.querySelectorAll("#screen5 button")
+    .forEach(btn=>{
+        btn.classList.remove("selected");
+    });
+
+
+    button.classList.add("selected");
+
+}
