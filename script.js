@@ -2,7 +2,7 @@ let answers = {
     format: "Не выбрано",
     mood: "Не выбрано",
     time: "Не выбрано",
-    style: "Не выбрано" // Добавили style в общий объект
+    style: "Не выбрано"
 };
 
 
@@ -16,7 +16,7 @@ function nextScreen(number){
 }
 
 
-// Выбор ответа в опроснике (для Экранов 2 и 3)
+// Выбор ответа в опроснике (Экран 2 и 3)
 function chooseOption(button, type){
     let buttons = button.parentElement.querySelectorAll("button");
 
@@ -42,12 +42,16 @@ function chooseTime(button){
 
 // Выбор стиля одежды (Экран 5)
 function chooseStyle(button){
-    document.querySelectorAll("#screen5 .options button").forEach(btn => {
+    let buttons = button.parentElement.querySelectorAll("button");
+
+    buttons.forEach(btn => {
         btn.classList.remove("selected");
     });
 
     button.classList.add("selected");
-    answers.style = button.innerText.trim(); // Теперь записываем прямо в answers.style
+    
+    // Записываем стиль в объект answers
+    answers.style = button.innerText.trim();
 }
 
 
@@ -60,30 +64,21 @@ function showResult(){
         return;
     }
 
-    let niceDate = new Date(date).toLocaleDateString("ru-RU");
+    // Форматирование даты
+    let dateParts = date.split('-');
+    let niceDate = `${dateParts[2]}.${dateParts[1]}.${dateParts[0]}`;
 
     // ТВОИ ДАННЫЕ TELEGRAM
     let BOT_TOKEN = "8814193874:AAEaOgUEiNzXqQINzUBrZdlAZ_oc56vuWbQ";
     let CHAT_ID = "660153132";
 
-    let message = `
-❤️ Новое приглашение на свидание!
+    let message = `❤️ Новое приглашение на свидание!
 
-📅 Дата:
-${niceDate}
-
-🕒 Время:
-${answers.time}
-
-✨ Формат:
-${answers.format}
-
-💫 Настроение:
-${answers.mood}
-
-👔 Одежда:
-${answers.style}
-`;
+📅 Дата: ${niceDate}
+🕒 Время: ${answers.time}
+✨ Формат: ${answers.format}
+💫 Настроение: ${answers.mood}
+👔 Одежда: ${answers.style}`;
 
     // Отправка в Telegram
     fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
