@@ -148,7 +148,6 @@ button:hover{
     margin-top: 0;
 }
 
-/* Стиль для кнопки Назад */
 .back-btn {
     background: rgba(255, 255, 255, 0.1) !important;
     color: #eee !important;
@@ -163,7 +162,7 @@ button:hover{
     flex: 2;
 }
 
-/* Фикс для инпута выбора даты (особенно на iOS и Safari) */
+/* Инпут выбора даты */
 input[type="date"] {
     width: 100%;
     padding: 14px;
@@ -176,10 +175,10 @@ input[type="date"] {
     color: #1e293b;
     text-align: center;
     outline: none;
-    -webkit-appearance: none; /* Сброс стандартных стилей iOS */
+    appearance: none;
+    -webkit-appearance: none;
 }
 
-/* Цвет иконки календаря внутри инпута */
 input[type="date"]::-webkit-calendar-picker-indicator {
     cursor: pointer;
     filter: invert(0.2);
@@ -203,6 +202,20 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     margin-top: 20px;
     font-size: 18px;
     line-height: 1.8;
+}
+
+/* Кнопка добавления в календарь */
+.calendar-btn {
+    background: linear-gradient(45deg, #22c55e, #10b981) !important;
+    font-weight: bold;
+    font-size: 17px;
+    margin-top: 18px;
+    box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4);
+}
+
+.calendar-btn:hover {
+    transform: scale(1.04);
+    background: linear-gradient(45deg, #16a34a, #059669) !important;
 }
 
 @media(max-width: 450px){
