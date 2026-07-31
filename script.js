@@ -1,6 +1,6 @@
 let answers = {
     format: "Не выбрано",
-    food: "Не выбрано",
+    food: "Не выбрано", // Добавили выбор еды
     mood: "Не выбрано",
     time: "Не выбрано",
     style: "Не выбрано"
@@ -59,7 +59,7 @@ function chooseStyle(button){
     answers.style = button.innerText.trim();
 }
 
-// Итоговый экран и отправка в Telegram
+// Итоговый экран
 function showResult(){
     let date = document.getElementById("date").value;
 
@@ -93,7 +93,7 @@ function showResult(){
     .then(() => console.log("Сообщение отправлено ❤️"))
     .catch(error => console.log(error));
 
-    // Вывод результатов на карточку
+    // Вывод результатов на экран карточки
     document.getElementById("result").innerHTML = `
 📅 Дата: <br><b>${niceDate}</b><br><br>
 🕒 Время: <br><b>${answers.time}</b><br><br>
@@ -104,51 +104,4 @@ function showResult(){
 `;
 
     nextScreen(7);
-}
-
-// Функция для добавления события в Календарь (iOS & Android)
-function addToCalendar() {
-    let dateInput = document.getElementById("date").value;
-    
-    if (!dateInput) {
-        alert("Дата не выбрана!");
-        return;
-    }
-
-    let timeString = answers.time.includes(":") ? answers.time : "19:00";
-    let [hours, minutes] = timeString.split(":");
-
-    let startDateTime = new Date(`${dateInput}T${hours || "19"}:${minutes || "00"}:00`);
-    let endDateTime = new Date(startDateTime.getTime() + 2 * 60 * 60 * 1000);
-
-    function formatDateToICS(date) {
-        return date.toISOString().replace(/-|:|\.\d\d\d/g, "");
-    }
-
-    let startFormatted = formatDateToICS(startDateTime);
-    let endFormatted = formatDateToICS(endDateTime);
-
-    let title = "Наше свидание ❤️";
-    let description = `План встречи:\n• Формат: ${answers.format}\n• Еда: ${answers.food}\n• Настроение: ${answers.mood}\n• Одежда: ${answers.style}`;
-
-    let icsContent = [
-        "BEGIN:VCALENDAR",
-        "VERSION:2.0",
-        "PRODID:-//Date Invitation//RU",
-        "BEGIN:VEVENT",
-        `SUMMARY:${title}`,
-        `DESCRIPTION:${description.replace(/\n/g, "\\n")}`,
-        `DTSTART:${startFormatted}`,
-        `DTEND:${endFormatted}`,
-        "END:VEVENT",
-        "END:VCALENDAR"
-    ].join("\r\n");
-
-    let blob = new Blob([icsContent], { type: "text/calendar;charset=utf-8;" });
-    let link = document.createElement("a");
-    link.href = window.URL.createObjectURL(blob);
-    link.setAttribute("download", "date-invitation.ics");
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
 }
