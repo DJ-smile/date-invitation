@@ -1,7 +1,6 @@
 let answers = {
     format: "Не выбрано",
-    food: "Не выбрано", // Добавили выбор еды
-    mood: "Не выбрано",
+    food: "Не выбрано",
     time: "Не выбрано",
     style: "Не выбрано"
 };
@@ -31,7 +30,7 @@ function prevScreen(number){
     document.getElementById("screen" + number).classList.add("active");
 }
 
-// Выбор опций (Формат, Еда, Настроение)
+// Выбор опций (Формат, Еда)
 function chooseOption(button, type){
     let buttons = button.parentElement.querySelectorAll("button");
     buttons.forEach(btn => btn.classList.remove("selected"));
@@ -59,7 +58,7 @@ function chooseStyle(button){
     answers.style = button.innerText.trim();
 }
 
-// Итоговый экран
+// Итоговый экран и отправка в Telegram
 function showResult(){
     let date = document.getElementById("date").value;
 
@@ -81,7 +80,6 @@ function showResult(){
 🕒 Время: ${answers.time}
 ✨ Формат: ${answers.format}
 🍕 Еда: ${answers.food}
-💫 Настроение: ${answers.mood}
 👔 Одежда: ${answers.style}`;
 
     // Отправка в Telegram
@@ -93,15 +91,14 @@ function showResult(){
     .then(() => console.log("Сообщение отправлено ❤️"))
     .catch(error => console.log(error));
 
-    // Вывод результатов на экран карточки
+    // Вывод результатов на карточку
     document.getElementById("result").innerHTML = `
 📅 Дата: <br><b>${niceDate}</b><br><br>
 🕒 Время: <br><b>${answers.time}</b><br><br>
 ✨ Свидание: <br><b>${answers.format}</b><br><br>
 🍕 Еда: <br><b>${answers.food}</b><br><br>
-💫 Настроение: <br><b>${answers.mood}</b><br><br>
 👔 Одежда: <br><b>${answers.style}</b>
 `;
 
-    nextScreen(7);
+    nextScreen(6);
 }
